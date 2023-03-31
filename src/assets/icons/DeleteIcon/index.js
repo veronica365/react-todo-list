@@ -8,7 +8,6 @@ export default function DeleteICon() {
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 60.167 60.167"
-      space="preserve"
     >
       <path
         d="M54.5,11.667H39.88V3.91c0-2.156-1.754-3.91-3.91-3.91H24.196c-2.156,0-3.91,1.754-3.91,3.91v7.756H5.667

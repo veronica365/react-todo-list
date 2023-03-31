@@ -1,6 +1,7 @@
-import Todos from "../../../logic/todos";
+import PropTypes from 'prop-types';
+import Todos from '../../../logic/todos';
 
-export default function TodoForm({update}) {
+export default function TodoForm({ update }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const description = e.target.elements[0].value;
@@ -11,8 +12,8 @@ export default function TodoForm({update}) {
 
   return (
     <form className="add-task" onSubmit={handleSubmit}>
-      <label>
-        <input type="text" placeholder="Add to your list..." />
+      <label htmlFor="todoid">
+        <input type="text" id="todoid" placeholder="Add to your list..." />
         <button type="submit" className="link">
           <svg
             fill="#000000"
@@ -29,3 +30,6 @@ export default function TodoForm({update}) {
     </form>
   );
 }
+TodoForm.propTypes = {
+  update: PropTypes.func.isRequired,
+};

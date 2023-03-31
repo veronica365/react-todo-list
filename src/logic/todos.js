@@ -1,5 +1,5 @@
 export default class Todos {
-  static todo = "todos-todo-list-react-veronica365-2023";
+  static todo = 'todos-todo-list-react-veronica365-2023';
 
   static setTodo(todos) {
     const newTodos = JSON.stringify(todos);
@@ -19,7 +19,7 @@ export default class Todos {
     return todos || [];
   }
 
-  static removeData(id = "", allCompleted = false) {
+  static removeData(id = '', allCompleted = false) {
     let todos = this.listData();
     if (allCompleted) {
       todos = todos.filter((todo) => !todo.completed);
@@ -35,9 +35,7 @@ export default class Todos {
   static updateData(counter, newDetails) {
     let todos = this.listData();
     todos = todos.map((item) => {
-      if (item.index === counter) {
-        item = { ...item, ...newDetails };
-      }
+      if (item.index === counter) return { ...item, ...newDetails };
       return item;
     });
     this.setTodo(todos);

@@ -1,7 +1,7 @@
 export default function TodoHeader() {
   return (
     <div className="todo-head">
-      <h1>Today's To Do</h1>
+      <h1>Today&apos;s To Do</h1>
       <span className="icon">
         <svg
           width="25px"

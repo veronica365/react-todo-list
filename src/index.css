@@ -170,10 +170,6 @@ h1 {
   border-color: var(--dark);
 }
 
-.todo-item.completed .todo-check input ~ .checkmark::after {
-  display: block;
-}
-
 .todo-item .more .move,
 .todo-item .more .delete {
   display: flex;
@@ -209,4 +205,8 @@ h1 {
   border: solid var(--black);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+.todo-item.completed .todo-check input ~ .checkmark::after {
+  display: block;
 }
