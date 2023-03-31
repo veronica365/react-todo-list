@@ -7,10 +7,11 @@ export default function TodoItem({ task, update }) {
   const removeTodo = () => {
     Todos.removeData(String(task.index), false);
     update(Todos.listData());
- };
+  };
   const handleChange = (e) => {
-    console.log("handleChange", e.target.value);
-  }
+    Todos.updateData(task.index, { completed: !task.completed });
+    update(Todos.listData());
+  };
   return (
     <article className={`todo-item${completed}`}>
       <div className="item-wrapper">
@@ -20,7 +21,7 @@ export default function TodoItem({ task, update }) {
               type="checkbox"
               data-id={task.index}
               onChange={handleChange}
-              checked={task.completed || task.selected ? "checked" : ""}
+              defaultChecked={task.completed || task.selected ? "" : false}
             />
             <span className="checkmark"></span>
           </label>
