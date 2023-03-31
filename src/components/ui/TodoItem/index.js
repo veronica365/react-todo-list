@@ -1,11 +1,13 @@
 import DeleteICon from "../../../assets/icons/DeleteIcon";
 import MoveIcon from "../../../assets/icons/MoveIcon";
+import Todos from "../../../logic/todos";
 
-export default function TodoItem({ task }) {
+export default function TodoItem({ task, update }) {
   const completed = task.completed ? " completed" : "";
   const removeTodo = () => {
-    console.log("removeTodo", task.index);
-  };
+    Todos.removeData(String(task.index), false);
+    update(Todos.listData());
+ };
   const handleChange = (e) => {
     console.log("handleChange", e.target.value);
   }

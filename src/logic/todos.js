@@ -2,7 +2,6 @@ export default class Todos {
   static todo = "todos-todo-list-react-veronica365-2023";
 
   static setTodo(todos) {
-    todos.sort((a, b) => b.index - a.index);
     const newTodos = JSON.stringify(todos);
     localStorage.setItem(this.todo, newTodos);
   }
