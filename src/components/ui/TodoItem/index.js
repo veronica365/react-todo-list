@@ -12,6 +12,15 @@ export default function TodoItem({ task, update }) {
     Todos.updateData(task.index, { completed: !task.completed });
     update(Todos.listData());
   };
+  const onEdit = (e) => {
+    if (e.code !== "Enter") return;
+    e.target.innerText = e.target.textContent;
+    const todoText = window.getSelection();
+    todoText.selectAllChildren(e.target);
+    todoText.collapseToEnd();
+    Todos.updateData(task.index, { description: e.target.innerText });
+    update(Todos.listData());
+  };
   return (
     <article className={`todo-item${completed}`}>
       <div className="item-wrapper">
@@ -25,7 +34,15 @@ export default function TodoItem({ task, update }) {
             />
             <span className="checkmark"></span>
           </label>
-          <div className="todo-title" data-id={task.index} contentEditable>
+          <div
+            contentEditable
+            className="todo-title"
+            onInput={onEdit}
+            onPaste={onEdit}
+            onKeyUp={onEdit}
+            onBlur={onEdit}
+            suppressContentEditableWarning
+          >
             {task.description}
           </div>
         </div>
