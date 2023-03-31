@@ -8,8 +8,12 @@ import TodoItem from "./components/ui/TodoItem";
 function App() {
   const [todos, setTodos] = useState(Todos.listData());
   const handleSetTodos = (newTodos) => setTodos(newTodos);
+  const clearCompleted = () => {
+    Todos.removeData("", true);
+    setTodos(Todos.listData());
+  };
   return (
-    <TodoLayout>
+    <TodoLayout handleClearCompleted={clearCompleted}>
       <TodoHeader />
       <TodoForm update={handleSetTodos} />
       {todos.map((task) => (
