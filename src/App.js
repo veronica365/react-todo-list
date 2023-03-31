@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Todos from "./logic/todos";
 import TodoLayout from "./components/hoc";
 import TodoHeader from "./components/ui/TodoHeader";
@@ -5,13 +6,14 @@ import TodoForm from "./components/ui/TodoForm";
 import TodoItem from "./components/ui/TodoItem";
 
 function App() {
-  const todos = Todos.listData();
+  const [todos, setTodos] = useState(Todos.listData());
+  const handleSetTodos = (newTodos) => setTodos(newTodos);
   return (
     <TodoLayout>
       <TodoHeader />
-      <TodoForm />
+      <TodoForm update={handleSetTodos} />
       {todos.map((task) => (
-        <TodoItem key={task.inde} task={task} />
+        <TodoItem key={task.index} task={task} update={handleSetTodos} />
       ))}
     </TodoLayout>
   );

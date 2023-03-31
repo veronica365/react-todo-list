@@ -1,9 +1,19 @@
-export default function TodoForm() {
+import Todos from "../../../logic/todos";
+
+export default function TodoForm({update}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const description = e.target.elements[0].value;
+    if (description) Todos.insert(description);
+    update(Todos.listData());
+    e.target.reset();
+  };
+
   return (
-    <form className="add-task">
+    <form className="add-task" onSubmit={handleSubmit}>
       <label>
         <input type="text" placeholder="Add to your list..." />
-        <button type="submit" disabled className="link">
+        <button type="submit" className="link">
           <svg
             fill="#000000"
             width="25px"

@@ -2,13 +2,16 @@ export default class Todos {
   static todo = "todos-todo-list-react-veronica365-2023";
 
   static setTodo(todos) {
+    todos.sort((a, b) => b.index - a.index);
     const newTodos = JSON.stringify(todos);
     localStorage.setItem(this.todo, newTodos);
   }
 
-  static addData(todo) {
+  static insert(description) {
     const todos = this.listData();
-    todos.push(todo);
+    const index = todos.length + 1;
+    const todo = { selected: false, completed: false, index };
+    todos.push({ ...todo, description });
     this.setTodo(todos);
   }
 
